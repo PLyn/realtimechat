@@ -1,7 +1,6 @@
 import gleam/bit_array
 import gleam/bytes_tree
 import gleam/erlang/process.{type Subject}
-import gleam/function
 import gleam/http
 import gleam/http/response
 import gleam/io
@@ -84,8 +83,6 @@ pub fn main() {
               let client = process.new_subject()
               actor.send(pubsub, Subscribe(client))
 
-              // In v1.3.0, use 'select' to add a subject to a selector.
-              // fn(Selector(a), Subject(b), fn(b) -> a) -> Selector(a)
               let selector =
                 process.new_selector()
                 |> process.select(client)
